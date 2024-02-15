@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="DiffSigner: Sign Language Production via Denoising Diffusion Model">
+    <meta name="keywords" content="SLP, Video Synthesis">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DiffSigner: Sign Language Production via Denoising Diffusion Model</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">DiffSigner: Sign Language Production via Denoising Diffusion Model</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-face">
+                        <video poster="" id="face" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S000598_P0008_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-sky">
+                        <video poster="" id="sky" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/07December_2011_Wednesday_tagesschau-5399.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-dog">
+                        <video poster="" id="dog" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S000020_P0000_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-ffhq">
+                        <video poster="" id="ffhq" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/01July_2011_Friday_tagesschau-2765.mp4">
+                        </video>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div align="center">
+            The left is the original video, the right is produced by our DiffSigner.
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-two-thirds">
+                    <h2 class="title is-2">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Generating natural and expressive sign language pose sequences from text has important practical significance. However, current sign language production (SLP) methods suffer from low quality and limited expressiveness. In this work, we propose DiffSigner, a classifier-free diffusion-based generative model designed specifically for SLP. Specifically, it consists of a mixed semantic encoder that enhances the semantic consistency and expressiveness of the generated sign language, which takes both text and gloss as input; and a novel sign language denoiser that generates natural sign language pose sequences according to the output of the semantic encoder. Furthermore, we find that introducing a sign language prompting mechanism in the duration predictor and diffusion model can improve the quality of the generated sign language. Experiments on two datasets show that DiffSigner outperforms existing SLP methods on multiple evaluation metrics. To advance sign language research, we also propose the largest known Chinese sign language dataset, COMMON-CONCERN, with 1876 hours of data. Experiments on the COMMON-CONCERN dataset show that DiffSigner is scalable, and more data can improve the quality of the generated sign language.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+        <!-- <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds">
+                <h2 class="title is-2">Video</h2>
+                <div class="publication-video">
+                    <iframe src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div> -->
+        <!--/ Paper video. -->
+    </section>
+
+
+    <section class="section">
+        <div class="container">
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            First put the tea and cups away, and then take out the watermelon from the refrigerator.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            He is four years old this year.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video id="1" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S000598_P0008_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video id="2" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S000020_P0000_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            I will go hiking today and go home for dinner in the evening.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            This child is idle all day long, which is really worrying.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video id="3" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S001349_P0000_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video id="4" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S003605_P0000_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            Mom was on a business trip, and grandma took care of our food and accommodation.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            The rainy season is coming, and flood control work has begun.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video id="5" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S003692_P0001_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video id="6" autoplay controls muted loop height="100%">
+                            <source src="videos/csl/S002025_P0005_T00.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            They will become denser again in the northwest half in the afternoon and bring rain.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            Tonight thirteen degrees on the coasts four degrees on the Alps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video id="7" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/07December_2011_Wednesday_tagesschau-5399.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video id="8" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/01July_2011_Friday_tagesschau-2765.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            Dear viewers, good evening.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            That's slowly going down in the east now, but in the south you'll still have showers and thunderstorms on the North Sea throughout the night.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video id="9" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/01June_2010_Tuesday_heute-6603.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video id="10" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/23August_2010_Monday_heute-5321.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            and the weather there also brings sunshine in the morning at least.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <p>
+                            It remains milder under the rain clouds in the east at fifteen to sixteen degrees.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video id="11" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/29April_2010_Thursday_heute-8626.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video id="11" autoplay controls muted loop height="100%">
+                            <source src="videos/pht/02August_2010_Monday_heute-1243.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+</body>
+
+</html>
